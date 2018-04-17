@@ -11,7 +11,7 @@
 > ## Please, note
 > 
 > * **Mounts:** `/etc` is mounted to volume completely as Docker doesn't support particular file mounts to named volumes. 
-> * **Encryption:** by default credentials are sent __unencrypted.__ You can inspect traffic with Wireshark (look for PSH/ACK packages) to find out with data are transmitted. This is due SOCKS5 is a data transport protocol, not encryption strategy.
+> * **Encryption:** by default credentials are sent __unencrypted.__ You can inspect traffic with Wireshark (look for PUSH/ACK packages) to find out which data is transmitted in plain text. This is due SOCKS5 is a data transport protocol, not encryption strategy.
 > * **Block all irrelevant ports:** to prevent Dante server recon by third-party bots and researchers, bind all ports except SOCKS5 to static IP/VPN. This can prevent server recon or misconfigure flaws.
 > * **No license, no warranty:** it's just a PoC with dozens of omited obvious tips. Use it at you own risk.
 
