@@ -8,6 +8,13 @@
 * important files are stored in named volume;
 * requires no mounts to host file system.
 
+> ## Please, note
+> 
+> * **Mounts:** `/etc` is mounted to volume completely as Docker doesn't support particular file mounts to named volumes. 
+> * **Encryption:** by default credentials are sent __unencrypted.__ You can inspect traffic with Wireshark (look for PSH/ACK packages) to find out with data are transmitted. This is due SOCKS5 is a data transport protocol, not encryption strategy.
+> * **Block all irrelevant ports:** to prevent Dante server recon by third-party bots and researchers, bind all ports except SOCKS5 to static IP/VPN. This can prevent server recon or misconfigure flaws.
+> * **No license, no warranty:** it's just a PoC with dozens of omited obvious tips. Use it at you own risk.
+
 ## Usage
 
 **Requirements:** Docker 18.01, docker-compose 1.18+. Should also work on previous versions.
@@ -67,11 +74,6 @@ useradd "$USER_NAME"
 echo "${USER_NAME}:${PASSWORD}" | chpasswd -c SHA256
 ```
 
+Don't forget to specify a new user can't login via SSH, has no shell, etc (not covered in this doc).
+
 To change password or delete user refer to common Linux/Ubuntu commands.
-
-
-## Important info
-
-* `/etc` is mounted to volume completely as Docker doesn't support particular file mounts to named volumes;
-* by default credentials are sent unencrypted;
-* no license, no warranty, **it's just a PoC** not for production use. Fork, fix and do what you want.
