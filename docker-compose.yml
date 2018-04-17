@@ -1,0 +1,18 @@
+version: '3.0'
+
+volumes:
+  etc:
+
+services:
+  dante:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    hostname: dante
+    container_name: dante
+    environment:
+      - WORKERS=20
+    volumes:
+      - "etc:/etc"
+    network_mode: "host"
+    restart: unless-stopped
