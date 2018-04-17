@@ -1,6 +1,6 @@
 # Telegram Dante server for Docker
 
-> Based on original repo by [schors](https://github.com/schors/tgdante).
+> Based on original work by [schors](https://github.com/schors/tgdante).
 
 ## Features against original tgdante
 
@@ -41,7 +41,7 @@ CONTAINER ID        STATUS              NAMES
 
 ### Users management
 
-Danter config relies on system user auth. To manage users, run commands inside Dante container:
+Dante config relies on system user auth. To manage users, run commands inside Dante container:
 
 ```
 # get ID of dante container
@@ -68,3 +68,10 @@ echo "${USER_NAME}:${PASSWORD}" | chpasswd -c SHA256
 ```
 
 To change password or delete user refer to common Linux/Ubuntu commands.
+
+
+## Important info
+
+* `/etc` is mounted to volume completely as Docker doesn't support particular file mounts to named volumes;
+* by default credentials are sent unencrypted;
+* no license, no warranty, **it's just a PoC** not for production use. Fork, fix and do what you want.
